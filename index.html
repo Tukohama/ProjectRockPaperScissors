@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Rock Paper Scissors</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            function getRandomInt (max) {
+                return Math.floor(Math.random()*Math.floor(max));
+            }
+
+            function computerPlay() {
+                let computerChoice = getRandomInt(3);
+                if(computerChoice == 0) {
+                    return "rock";
+                }
+                else if(computerChoice == 1) {
+                    return "paper";
+                }
+                else if(computerChoice == 2) {
+                    return "scissors";
+                }
+            }
+
+            function playRound (player1Selection, player2Selection) {
+                player1Selection = player1Selection.toUpperCase();
+                player2Selection = player2Selection.toUpperCase();
+                if(player1Selection == "ROCK") {
+                    if(player2Selection == "ROCK") {
+                        return "draw";
+                    }
+                    if(player2Selection == "PAPER") {
+                        return "player2";
+                    }
+                    if(player2Selection == "SCISSORS") {
+                        return "player1";
+                    }
+                }
+                if(player1Selection == "PAPER") {
+                    if(player2Selection == "ROCK") {
+                        return "player1";
+                    }
+                    if(player2Selection == "PAPER") {
+                        return "draw";
+                    }
+                    if(player2Selection == "SCISSORS") {
+                        return "player2";
+                    }
+                }
+                if(player1Selection == "SCISSORS") {
+                    if(player2Selection == "ROCK") {
+                        return "player2";
+                    }
+                    if(player2Selection == "PAPER") {
+                        return "player1";
+                    }
+                    if(player2Selection == "SCISSORS") {
+                        return "draw";
+                    }
+                }
+
+                function printToConsole () {
+                    playerChoice = prompt("You are Player 1, playing against Player 2(Computer)", 
+                    "please input either 'rock', 'paper', or 'scissors'(case insensitive); \
+                    all other inputs are invalid");
+                    computerChoice = computerPlay();
+
+                    let winner = playRound(playerChoice, computerChoice);
+                    if (winner == "draw") {
+                        console.log("It's a tie!");
+                    }
+                    else if (winner == "player1") {
+                        console.log("You(Player 1) have won!");
+                    }
+                    else if (winner == "player2") {
+                        console.log("Player 2(Computer) has won!");
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
